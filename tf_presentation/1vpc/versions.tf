@@ -5,20 +5,12 @@ terraform {
     aws = {
       source  = "hashicorp/aws"
       version = ">= 4.6"
-    }
-    null = {
-      source = "hashicorp/null"
-      version = "~> 3"
-    }    
-    random = {
-      source = "hashicorp/random"
-      version = "~> 3"
-    }            
   }
+ }
   # Adding Backend as S3 for Remote State Storage
   backend "s3" {
     bucket = "multi-purpose-office-bkt"
-    key    = "dev/proj22-vpc/terraform.tfstate"
+    key    = "dev/proj1-vpc/terraform.tfstate"
     region = "us-east-1" 
 
     # Enable during Step-09     
@@ -30,10 +22,5 @@ terraform {
 # Provider Block
 provider "aws" {
   region  = var.aws_region
-}
-
-provider "aws" {
-  alias  = "region2"
-  region  = var.aws_region2
 }
 
